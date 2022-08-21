@@ -19,9 +19,9 @@ public class Conta {
 		}		
 	}
 	
-	public boolean transfere(double valor,Conta destino) {
+	public boolean transfere(double valor, Conta origem, Conta destino) {
 		if (this.saldo >= valor) {
-			this.saldo -= valor;
+			origem.saca(valor);
 			destino.deposita(valor);
 			return true;			
 		}else {
