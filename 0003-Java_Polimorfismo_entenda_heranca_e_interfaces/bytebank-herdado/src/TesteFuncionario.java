@@ -16,6 +16,7 @@ public class TesteFuncionario {
 		boolean autenticou = g1.autentica(1234);
 		
 		System.out.println(autenticou);
+		System.out.println(g1.getBonificacao());
 
 	}
 
