@@ -11,7 +11,7 @@ public class Conta {
 	public Conta(int agencia, int numero) {
 		this.agencia = agencia;
 		this.numero = numero;
-		this.saldo = 100; //a menos que seja modificado, toda conta será iniciada com um saldo de R$100,00
+		//this.saldo = 100; //a menos que seja modificado, toda conta será iniciada com um saldo de R$100,00
 		System.out.println("Conta " + numero + " criada com sucesso");
 		total ++;
 	}
