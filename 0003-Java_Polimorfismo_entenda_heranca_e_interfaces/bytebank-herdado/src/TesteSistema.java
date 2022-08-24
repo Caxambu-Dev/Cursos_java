@@ -8,6 +8,8 @@ public class TesteSistema {
 		SistemaInterno si = new SistemaInterno();
 
 		si.autentica(g);
+		
+	
 
 	}
 

@@ -3,20 +3,22 @@ public class Cliente implements Autenticavel{
 
     private String nome;
     private String cpf;
-    private String profissao;
-    private int senha;
-    
-    @Override
-    public void setSenha(int Senha) {
-    	this.senha = senha;    	
+    private String profissao;    
+    private AutenticacaoUtil autenticador;
+
+    public Cliente(){
+
+        this.autenticador = new AutenticacaoUtil();
     }
+
     @Override
-    public boolean autentica(int senha) {
-        if(this.senha == senha){
-            return true;
-        } else {
-            return false;
-        }
+    public void setSenha(int senha){
+        this.autenticador.setSenha(senha);
+    }
+
+    @Override
+    public boolean autentica(int senha){
+        return this.autenticador.autentica(senha);
     }
     
 	public String getNome() {
