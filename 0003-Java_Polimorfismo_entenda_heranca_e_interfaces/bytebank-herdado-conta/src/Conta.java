@@ -1,74 +1,80 @@
 
 
 public abstract class Conta {
-	
-	protected double saldo;
-	private int agencia;
-	private int numero;
-	private Cliente Titular;	
-	private static int total = 0;
-	
-	public Conta(int agencia, int numero) {
-		this.agencia = agencia;
-		this.numero = numero;
-		//this.saldo = 100; //a menos que seja modificado, toda conta será iniciada com um saldo de R$100,00
-		System.out.println("Conta " + numero + " criada com sucesso");
-		total ++;
-	}
 
-	public abstract void deposita(double valor);
-	
-	public boolean saca (double valor) {
-		if (this.saldo >= valor) {
-			saldo -= valor;
-			return true;
-		}else {
-			return false;
-		}		
-	}
-	
-	public boolean transfere(double valor, Conta origem, Conta destino) {
-		if (this.saldo >= valor) {
-			origem.saca(valor);
-			destino.deposita(valor);
-			return true;			
-		}else {
-			return false;
-		}
-		
-	}
+    protected double saldo;
+    private int agencia;
+    private int numero;
+    private Cliente titular;
+    private static int total = 0;
+    
+    public Conta(int agencia, int numero){
+        Conta.total++;
+        //System.out.println("O total de contas é " + Conta.total);
+        this.agencia = agencia;
+        this.numero = numero;
+        //this.saldo = 100;
+        //System.out.println("Estou criando uma conta " + this.numero);
+    }
 
-	public int getAgencia() {
-		return agencia;
-	}
+    public abstract void deposita(double valor);
 
-	public void setAgencia(int agencia) {
-		this.agencia = agencia;
-	}
+    public boolean saca(double valor) {
+        if(this.saldo >= valor) {
+            this.saldo -= valor;
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-	public int getNumero() {
-		return numero;
-	}
+    public boolean transfere(double valor, Conta destino) {
+        if(this.saca(valor)) {
+        		destino.deposita(valor);
+        		return true;
+        } else {
+        		return false;
+        }
+    }
 
-	public void setNumero(int numero) {
-		this.numero = numero;
-	}
+    public double getSaldo(){
+        return this.saldo;
+    }
 
-	public Cliente getTitular() {
-		return Titular;
-	}
+    public int getNumero(){
+        return this.numero;
+    }
 
-	public void setTitular(Cliente titular) {
-		Titular = titular;
-	}
+    public void setNumero(int numero){
+        if(numero <= 0) {
+            System.out.println("Nao pode valor menor igual a 0");
+            return;
+        }
+        this.numero = numero;
+    }
 
-	public double getSaldo() {
-		return saldo;
-	}
-	
-	public static int getTotal() {
-		return Conta.total;
-	}
+    public int getAgencia(){
+        return this.agencia;
+    }
+
+    public void setAgencia(int agencia){
+       if(agencia <= 0) {
+           System.out.println("Nao pode valor menor igual a 0");
+           return;
+       }
+       this.agencia = agencia;
+    }
+
+    public void setTitular(Cliente titular){
+        this.titular = titular;
+    }
+
+    public Cliente getTitular(){
+        return this.titular;
+    }
+
+    public static int getTotal(){
+        return Conta.total;
+    }
 
 }
-
