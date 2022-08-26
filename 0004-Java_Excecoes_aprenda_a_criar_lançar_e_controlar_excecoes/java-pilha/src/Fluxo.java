@@ -5,7 +5,8 @@ public class Fluxo {
         try {
         	metodo1();
         } catch (ArithmeticException  ex) {
-        	System.out.println("ArithmeticException");
+        	String msg = ex.getMessage();
+        	System.out.println("ArithmeticException" + msg);
         }
         System.out.println("Fim do main");
     }
